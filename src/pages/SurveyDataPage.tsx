@@ -68,13 +68,14 @@ export default function SurveyDataPage() {
             });
             await Swal.fire("Success", "Workbook processing initiated", "success");
         } catch (error) {
+            console.log(error)
             await Swal.fire("Error", "Failed to process workbook", "error");
         }
     };
 
-    const showNotificationAlert = (id: string) => {
-        Swal.fire("Notification Info", `Notification ID: ${id}`, "info");
-    };
+    // const showNotificationAlert = (id: string) => {
+    //     Swal.fire("Notification Info", `Notification ID: ${id}`, "info");
+    // };
 
     return (
         <div className="flex p-4">
