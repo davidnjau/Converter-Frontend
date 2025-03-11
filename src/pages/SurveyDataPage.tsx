@@ -3,7 +3,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import Table from "./Table.tsx"
 
-const base_url = "http://0.0.0.0:7001/";
+const base_url = "http://192.168.214.175:7001/";
 
 interface Notification {
     id: string;
