@@ -83,6 +83,7 @@ export default function SurveyDataPage() {
                     <h4 className="header-style">Survey Data</h4>
 
                     <a href="http://192.168.214.114:8000/public/question/b8755475-7d2b-4b5e-b3de-44854ada2d9a"
+                       target="_blank"
                        className="button-4 json-file-style">
                         Get Survey JSON File
                     </a>

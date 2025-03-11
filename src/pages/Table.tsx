@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from "sweetalert2";
 
 
 interface TableProps {
@@ -6,8 +7,8 @@ interface TableProps {
 }
 
 
-const handleAction = (itemId: string) => {
-    alert(itemId)
+const handleAction = (message: string) => {
+    Swal.fire("Notification Info", `${message}`, "info");
     // Add retry logic here
 };
 
@@ -49,7 +50,7 @@ const Table: React.FC<TableProps> = ({ data }) => {
                         <td className="px-4 py-2 table-content-style">
                             <button
                                 className="px-3 py-1 button-4"
-                                onClick={() => handleAction(item.id)}>
+                                onClick={() => handleAction(item.message)}>
                                 View
                             </button>
                         </td>
