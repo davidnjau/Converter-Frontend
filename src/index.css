@@ -293,4 +293,9 @@ button:focus-visible {
 .header-style{
   color: #1a1a1a;
 }
+.notification-table-header {
+  background-color: #f1f1f1;
+  color: #333;
+  font-weight: bold;
+}
 

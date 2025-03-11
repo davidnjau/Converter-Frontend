@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import Table from "./Table.tsx"
 
-const base_url = "{{base_url}}";
+const base_url = "http://0.0.0.0:7001/";
 
 interface Notification {
-    id: number;
+    id: string;
+    createdAt: string;
     message: string;
-    Status: "PENDING" | "FAILED" | "COMPLETED";
+    status: string;
 }
 
 export default function SurveyDataPage() {
@@ -17,13 +19,14 @@ export default function SurveyDataPage() {
     const [processType, setProcessType] = useState<string>("");
     const [notifications, setNotifications] = useState<Notification[]>([]);
 
+
     useEffect(() => {
         fetchNotifications();
     }, []);
 
     const fetchNotifications = async () => {
         try {
-            const response = await axios.get<Notification[]>(`${base_url}api/v1/notification/`);
+            const response = await axios.get<Notification[]>(`${base_url}data/api/v1/notification/`);
             setNotifications(response.data);
         } catch (error) {
             console.error("Error fetching notifications", error);
@@ -47,6 +50,7 @@ export default function SurveyDataPage() {
             await axios.post(`${base_url}json/api/v1/import`, formData);
             await Swal.fire("Success", "File uploaded successfully", "success");
         } catch (error) {
+            console.log(error)
             await Swal.fire("Error", "Failed to upload file", "error");
         }
     };
@@ -68,7 +72,7 @@ export default function SurveyDataPage() {
         }
     };
 
-    const showNotificationAlert = (id: number) => {
+    const showNotificationAlert = (id: string) => {
         Swal.fire("Notification Info", `Notification ID: ${id}`, "info");
     };
 
@@ -80,7 +84,7 @@ export default function SurveyDataPage() {
 
                     <h3 className="header-style">Upload File</h3>
 
-                    <input type="file" accept=".xls,.xlsx" onChange={handleFileChange} className="choose-file-style"/>
+                    <input type="file" accept=".json" onChange={handleFileChange} className="choose-file-style"/>
                     <button className="button-4" onClick={uploadFile}>
                         Upload
                     </button>
@@ -105,27 +109,9 @@ export default function SurveyDataPage() {
 
             </div>
 
-            <div className="w-1/2 p-4 card-expand">
-                <h3 className="header-style">Notifications</h3>
-                <ul>
-                    {/*{notifications.map((notification) => (*/}
-                    {/*    <li*/}
-                    {/*        key={notification.id}*/}
-                    {/*        className={`p-2 mb-2 rounded ${*/}
-                    {/*            notification.Status === "PENDING" ? "bg-yellow-300" :*/}
-                    {/*                notification.Status === "FAILED" ? "bg-red-300" : "bg-green-300"*/}
-                    {/*        }`}*/}
-                    {/*    >*/}
-                    {/*        <span>{notification.message}</span>*/}
-                    {/*        <button*/}
-                    {/*            className="bg-gray-500 text-white px-2 py-1 ml-2 rounded"*/}
-                    {/*            onClick={() => showNotificationAlert(notification.id)}*/}
-                    {/*        >*/}
-                    {/*            View*/}
-                    {/*        </button>*/}
-                    {/*    </li>*/}
-                    {/*))}*/}
-                </ul>
+            <div className="w-1/2 p-4 card">
+                {/*<h3 className="header-style">Notifications</h3>*/}
+                <Table data={notifications} />
             </div>
         </div>
     );
