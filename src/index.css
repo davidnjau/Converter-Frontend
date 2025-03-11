@@ -290,7 +290,7 @@ button:focus-visible {
 }
 
 .header-style{
-  color: #1a1a1a;
+  color: rgba(26, 26, 26, 0.63);
 }
 .notification-table-header {
   background-color: #f1f1f1;
@@ -300,4 +300,10 @@ button:focus-visible {
 .json-file-style {
   margin-bottom: 10px;
 }
+.table-content-style {
+  color: rgba(26, 26, 26, 0.63);
+  padding: 5px;
+  margin-left: 10px;
+}
+
 

@@ -4,12 +4,10 @@ import Swal from "sweetalert2";
 import Table from "./Table.tsx"
 
 const base_url = "http://192.168.214.175:7001/";
+// const base_url = "http://0.0.0.0:7001/";
 
 interface Notification {
-    id: string;
-    createdAt: string;
-    message: string;
-    status: string;
+    id:string; status: string; createdAt: string; userInfo: string; message: string; timeElapsed: string;
 }
 
 export default function SurveyDataPage() {
@@ -35,7 +33,8 @@ export default function SurveyDataPage() {
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files.length > 0) {
-            setFile(e.target.files[0]);
+            const file = e.target.files[0]; // Get the first selected file
+            setFile(file);
         }
     };
 
@@ -48,7 +47,7 @@ export default function SurveyDataPage() {
         formData.append("file", file);
         try {
             await axios.post(`${base_url}json/api/v1/import`, formData);
-            await Swal.fire("Success", "File uploaded successfully", "success");
+            await Swal.fire("Success", "File uploaded successfully. Kindly Process the workbook.", "success");
         } catch (error) {
             console.log(error)
             await Swal.fire("Error", "Failed to upload file", "error");
@@ -80,9 +79,7 @@ export default function SurveyDataPage() {
     return (
         <div className="flex p-4">
             <div className="w-1/2 p-4">
-
                 <div className="card">
-
                     <h4 className="header-style">Survey Data</h4>
 
                     <a href="http://192.168.214.114:8000/public/question/b8755475-7d2b-4b5e-b3de-44854ada2d9a"
@@ -90,45 +87,58 @@ export default function SurveyDataPage() {
                         Get Survey JSON File
                     </a>
 
+                    {/* Horizontal line before Upload File */}
+                    <hr className="my-4 border-t border-gray-300" />
+
                     <h4 className="header-style">Upload File</h4>
 
-                    <input type="file" accept=".json" onChange={handleFileChange} className="choose-file-style"/>
-                    <button className="button-4" onClick={uploadFile}>
-                        Upload
-                    </button>
+                    {/* Flex container for file input and upload button */}
+                    <div className="flex items-center justify-between space-x-4">
+                        <input
+                            type="file"
+                            accept=".json"
+                            onChange={handleFileChange}
+                            className="choose-file-style"
+                        />
+
+                        {/* Display selected file name */}
+                        {/*{file && <span className="text-gray-700">File Selected</span>}*/}
+
+                        <button className="button-4" onClick={uploadFile}>
+                            Upload
+                        </button>
+                    </div>
 
                 </div>
 
                 <div className="card">
-
                     <h3 className="header-style">Process Workbook</h3>
 
-                    <select className="form-input-style" value={processType}
-                            onChange={(e) => setProcessType(e.target.value)}>
-                        <option value="">Select Process Type</option>
-                        <option value="SURVEY">Survey</option>
-                    </select>
+                    {/* Added flex flex-col for vertical alignment */}
+                    <div className="flex flex-col space-y-4">
+                        <select className="form-input-style" value={processType}
+                                onChange={(e) => setProcessType(e.target.value)}>
+                            <option value="">Select Process Type</option>
+                            <option value="SURVEY">Survey</option>
+                        </select>
 
-                    <input type="email" placeholder="Email Address" className="form-input-style" value={emailAddress}
-                           onChange={(e) => setEmailAddress(e.target.value)}/>
+                        <input type="email" placeholder="Email Address" className="form-input-style" value={emailAddress}
+                               onChange={(e) => setEmailAddress(e.target.value)}/>
 
-                    <input type="text" placeholder="File Name" className="form-input-style" value={fileName}
-                           onChange={(e) => setFileName(e.target.value)}/>
-                    {/*<input type="text" placeholder="Process Type (SURVEY)" className="form-input-style" value={processType}*/}
-                    {/*       onChange={(e) => setProcessType(e.target.value)}/>*/}
+                        <input type="text" placeholder="File Name" className="form-input-style" value={fileName}
+                               onChange={(e) => setFileName(e.target.value)}/>
 
-                    <button className="button-choose-file" onClick={processWorkbook}>
-                        Submit
-                    </button>
-
+                        <button className="button-choose-file" onClick={processWorkbook}>
+                            Submit
+                        </button>
+                    </div>
                 </div>
-
             </div>
 
             <div className="w-1/2 p-4 card">
-                {/*<h3 className="header-style">Notifications</h3>*/}
                 <Table data={notifications} />
             </div>
         </div>
     );
+
 }
