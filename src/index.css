@@ -28,8 +28,8 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  /*display: flex;*/
+  /*place-items: center;*/
   min-width: 320px;
   min-height: 100vh;
 }
@@ -132,7 +132,6 @@ button:focus-visible {
 /* From Uiverse.io by nikk7007 */
 .button-choose-file {
   --color: #00A97F;
-  padding: 0.8em 1.7em;
   background-color: transparent;
   border-radius: .3em;
   position: relative;
@@ -188,7 +187,7 @@ button:focus-visible {
 /*Card  Update*/
 /* From Uiverse.io by Yaya12085 */
 .card {
-  display: flex;
+  /*display: flex;*/
   flex-direction: column;
   justify-content: space-between;
   border-radius: 0.75rem;
@@ -278,7 +277,7 @@ button:focus-visible {
   color: #555;
   outline: none;
   background-color: cornsilk;
-  margin-bottom: 5px;
+  margin: 5px;
 }
 
 .form-input-style:focus {
@@ -297,5 +296,8 @@ button:focus-visible {
   background-color: #f1f1f1;
   color: #333;
   font-weight: bold;
+}
+.json-file-style {
+  margin-bottom: 10px;
 }
 

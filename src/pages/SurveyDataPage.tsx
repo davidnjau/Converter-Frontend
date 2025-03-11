@@ -83,7 +83,14 @@ export default function SurveyDataPage() {
 
                 <div className="card">
 
-                    <h3 className="header-style">Upload File</h3>
+                    <h4 className="header-style">Survey Data</h4>
+
+                    <a href="http://192.168.214.114:8000/public/question/b8755475-7d2b-4b5e-b3de-44854ada2d9a"
+                       className="button-4 json-file-style">
+                        Get Survey JSON File
+                    </a>
+
+                    <h4 className="header-style">Upload File</h4>
 
                     <input type="file" accept=".json" onChange={handleFileChange} className="choose-file-style"/>
                     <button className="button-4" onClick={uploadFile}>
@@ -96,12 +103,20 @@ export default function SurveyDataPage() {
 
                     <h3 className="header-style">Process Workbook</h3>
 
+                    <select className="form-input-style" value={processType}
+                            onChange={(e) => setProcessType(e.target.value)}>
+                        <option value="">Select Process Type</option>
+                        <option value="SURVEY">Survey</option>
+                    </select>
+
                     <input type="email" placeholder="Email Address" className="form-input-style" value={emailAddress}
                            onChange={(e) => setEmailAddress(e.target.value)}/>
+
                     <input type="text" placeholder="File Name" className="form-input-style" value={fileName}
                            onChange={(e) => setFileName(e.target.value)}/>
-                    <input type="text" placeholder="Process Type (SURVEY)" className="form-input-style" value={processType}
-                           onChange={(e) => setProcessType(e.target.value)}/>
+                    {/*<input type="text" placeholder="Process Type (SURVEY)" className="form-input-style" value={processType}*/}
+                    {/*       onChange={(e) => setProcessType(e.target.value)}/>*/}
+
                     <button className="button-choose-file" onClick={processWorkbook}>
                         Submit
                     </button>
