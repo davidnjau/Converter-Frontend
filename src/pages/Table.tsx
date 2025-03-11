@@ -22,7 +22,7 @@ const Table: React.FC<TableProps> = ({ data }) => {
                 <thead className="bg-gray-300 text-black">
                 <tr className="border border-black">
                     <th className="px-4 py-2 text-left w-10 border border-black header-style">#</th>
-                    {/*<th className="px-4 py-2 text-left border border-black header-style">Date Created</th>*/}
+                    <th className="px-4 py-2 text-left border border-black header-style">Message</th>
                     <th className="px-4 py-2 text-left border border-black header-style">Time Elapsed</th>
                     <th className="px-4 py-2 text-left border border-black header-style">Status</th>
                     <th className="px-4 py-2 text-left border border-black header-style">Action</th>
@@ -32,14 +32,14 @@ const Table: React.FC<TableProps> = ({ data }) => {
                 {data.map((item, index) => (
                     <tr key={index} className="border border-black bg-gray-100 hover:bg-gray-200 text-black table-content-style">
                         <td className="px-4 py-2 border border-black table-content-style">{index + 1}</td>
-                        {/*<td className="px-4 py-2 border border-black table-content-style">{item.createdAt}</td>*/}
+                        <td className="px-4 py-2 border border-black table-content-style">{item.message}</td>
                         <td className="px-4 py-2 border border-black table-content-style">{(item.timeElapsed)}</td>
                         <td className="px-4 py-2 border border-black table-content-style">
                             <span
                                 className={`px-3 py-1 rounded text-white ${
-                                    item.status === "PENDING"
+                                    item.status === "pending"
                                         ? "bg-yellow-800"
-                                        : item.status === "FAILED"
+                                        : item.status === "failed"
                                             ? "bg-red-800"
                                             : "bg-green-800"
                                 }`}
