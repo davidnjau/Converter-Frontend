@@ -1,0 +1,296 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+/* CSS */
+.button-4 {
+  appearance: none;
+  background-color: #FAFBFC;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 16px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+.button-4:hover {
+  background-color: #F3F4F6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+.button-4:disabled {
+  background-color: #FAFBFC;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959DA5;
+  cursor: default;
+}
+
+.button-4:active {
+  background-color: #EDEFF2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+.button-4:focus {
+  outline: 1px transparent;
+}
+
+.button-4:before {
+  display: none;
+}
+
+.button-4::-webkit-details-marker {
+  display: none;
+}
+
+/* From Uiverse.io by nikk7007 */
+.button-choose-file {
+  --color: #00A97F;
+  padding: 0.8em 1.7em;
+  background-color: transparent;
+  border-radius: .3em;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: .5s;
+  font-weight: 400;
+  font-size: 17px;
+  border: 1px solid;
+  font-family: inherit;
+  text-transform: uppercase;
+  color: var(--color);
+  z-index: 1;
+  margin-top: 10px;
+}
+
+.button-choose-file::before, .button-choose-file::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  background-color: var(--color);
+  transition: 1s ease;
+}
+
+.button-choose-file::before {
+  top: -1em;
+  left: -1em;
+}
+
+.button-choose-file::after {
+  left: calc(100% + 1em);
+  top: calc(100% + 1em);
+}
+
+.button-choose-file:hover::before, .button-choose-file:hover::after {
+  height: 410px;
+  width: 410px;
+}
+
+.button-choose-file:hover {
+  color: rgb(10, 25, 30);
+}
+
+.button-choose-file:active {
+  filter: brightness(.8);
+}
+
+/*Card  Update*/
+/* From Uiverse.io by Yaya12085 */
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 0.75rem;
+  background-color: white;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,.1),
+  0 2px 4px -2px rgba(0,0,0,.1);
+  margin: 20px;
+  padding: 20px;
+}
+
+.card-expand {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 0.75rem;
+  background-color: white;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,.1),
+  0 2px 4px -2px rgba(0,0,0,.1);
+  margin: 20px;
+  padding: 20px;
+}
+
+.header {
+  position: relative;
+  background-clip: border-box;
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border-radius: 0.75rem;
+  background-color: rgb(33 150 243);
+  box-shadow: 0 10px 15px -3px rgba(33,150,243,.4),0 4px 6px -4px rgba(33,150,243,.4);
+  height: 14rem;
+}
+
+.info {
+  border: none;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.title {
+  color: rgb(38 50 56);
+  letter-spacing: 0;
+  line-height: 1.375;
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer {
+  padding: 0.75rem;
+  border: 1px solid rgb(236 239 241);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(0, 140, 255, 0.082);
+}
+
+.tag {
+  font-weight: 300;
+  font-size: .75rem;
+  display: block;
+}
+
+.action {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  border: none;
+  outline: none;
+  box-shadow: 0 4px 6px -1px rgba(33,150,243,.4),0 2px 4px -2px rgba(33,150,243,.4);
+  color: rgb(255 255 255);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: .75rem;
+  padding: 0.75rem 1.5rem;
+  background-color: rgb(33 150 243);
+  border-radius: 0.5rem;
+}
+
+/*Form Data*/
+.form-input-style {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #555;
+  outline: none;
+  background-color: cornsilk;
+  margin-bottom: 5px;
+}
+
+.form-input-style:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.choose-file-style{
+  margin-bottom: 10px;
+}
+
+.header-style{
+  color: #1a1a1a;
+}
+
